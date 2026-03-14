@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: uim-sap-oau
+  labels:
+    app: uim-sap-oau
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: uim-sap-oau
+  template:
+    metadata:
+      labels:
+        app: uim-sap-oau
+    spec:
+      containers:
+      - name: uim-sap-oau
+        image: ghcr.io/uimsolutions/uim-sap-oau:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - name: http
+          containerPort: 8090
+        envFrom:
+        - configMapRef:
+            name: uim-sap-oau-config
+        env:
+        - name: OAU_AUTH_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: uim-sap-oau-secret
+              key: auth-token
+              optional: true
+        readinessProbe:
+          httpGet:
+            path: /api/oau/ready
+            port: http
+          initialDelaySeconds: 3
+          periodSeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /api/oau/health
+            port: http
+          initialDelaySeconds: 10
+          periodSeconds: 10
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 500m
+            memory: 512Mi

@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: uim-sap-oau
+  labels:
+    app: uim-sap-oau
+spec:
+  selector:
+    app: uim-sap-oau
+  ports:
+  - name: http
+    protocol: TCP
+    port: 80
+    targetPort: 8090
+  type: ClusterIP
