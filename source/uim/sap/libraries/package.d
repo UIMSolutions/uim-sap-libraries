@@ -4,6 +4,8 @@ public {
     import uim.sap.library;
     import uim.sap.snc;
     import uim.sap.idoc;
+    import uim.sap.ale;
+    import uim.sap.edi;
     // import uim.sap.libraries.oauth;
     // import uim.sap.libraries.odata;
     // import uim.sap.libraries.rfc;

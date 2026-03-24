@@ -19,6 +19,7 @@ jobs:
           - library
           - snc
           - idoc
+          - ale
         compiler:
           - dmd-latest
 
