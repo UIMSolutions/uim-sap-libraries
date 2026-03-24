@@ -1,0 +1,49 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    name: Test (${{ matrix.package }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        package:
+          - .
+          - library
+        compiler:
+          - dmd-latest
+
+    defaults:
+      run:
+        shell: bash
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup D toolchain
+        uses: dlang-community/setup-dlang@v2
+        with:
+          compiler: ${{ matrix.compiler }}
+
+      - name: Cache DUB packages
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.dub/packages
+            ~/.cache/dub
+          key: ${{ runner.os }}-${{ matrix.compiler }}-${{ matrix.package }}-${{ hashFiles('**/dub.sdl', '**/dub.json', '**/dub.selections.json') }}
+          restore-keys: |
+            ${{ runner.os }}-${{ matrix.compiler }}-${{ matrix.package }}-
+            ${{ runner.os }}-${{ matrix.compiler }}-
+
+      - name: Run tests
+        working-directory: ${{ matrix.package }}
+        run: dub test --build=debug
