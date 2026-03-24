@@ -1,0 +1,11 @@
+name "sap-odata"
+description "D language library for working with SAP OData services using vibe.d"
+authors "UIM"
+license "proprietary"
+
+dependency "vibe-d:http" version="~>0.10"
+dependency "vibe-d:data" version="~>0.10"
+
+targetType "library"
+sourcePaths "source"
+importPaths "source"

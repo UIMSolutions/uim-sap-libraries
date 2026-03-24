@@ -1,5 +1,5 @@
 // Metadata
-name "uim-sap-clients"
+name "uim-sap"
 description "D library for SAP-related services and utilities, including Authorization and Trust Management, Job Scheduling, Malware Scanning, and Datasphere-like business data fabric service for BTP"
 homepage "https://www.sueel.de/uim/sap"
 authors "Ozan Nurettin Süel" "UI Manufaktur"
@@ -8,23 +8,63 @@ license "Apache-2.0"
 
 // Target
 targetType "library"
-targetName "uim-sap-clients"
+targetName "uim-sap"
 
 // External dependencies
 dependency "uim-framework" version="~>26.3.5"
 
 // Internal Dependencies
-dependency ":client" version="*"
+dependency ":service" version="*"
 
-dependency ":s4" version="*"
+dependency ":abap-runtime" version="*"
+dependency ":advanced-event-mesh" version="*"
+dependency ":agentry" version="*"
+dependency ":alert-notification" version="*"
+dependency ":application-autoscaler" version="*"
+dependency ":audit-log" version="*"
+dependency ":authorization-trust-management" version="*"
+dependency ":automation-pilot" version="*"
+dependency ":content-agent" version="*"
+dependency ":feature-flags" version="*"
+dependency ":identity-provisioning" version="*"
+dependency ":keystore" version="*"
+dependency ":kyma" version="*"
+dependency ":master-data-integration" version="*"
+dependency ":master-data-governance" version="*"
+dependency ":mobile" version="*"
+dependency ":monitoring" version="*"
+dependency ":personal-data-manager" version="*"
+dependency ":personalized-recommendation" version="*"
+dependency ":site-directory" version="*"
+dependency ":site-manager" version="*"
 
 // Source files
 sourceFiles "./source/uim/sap/all.d"
 
 // Subpackages
-subPackage "client"
+subPackage "service"
 
-subPackage "s4"
+subPackage "abap-runtime"
+subPackage "advanced-event-mesh"
+subPackage "agentry"
+subPackage "alert-notification"
+subPackage "application-autoscaler"
+subPackage "audit-log"
+subPackage "authorization-trust-management"
+subPackage "automation-pilot"
+subPackage "content-agent"
+subPackage "feature-flags"
+subPackage "identity-provisioning"
+subPackage "keystore"
+subPackage "kyma"
+subPackage "master-data-integration"
+subPackage "master-data-governance"
+subPackage "mobile"
+subPackage "monitoring"
+subPackage "personal-data-manager"
+subPackage "personalized-recommendation"
+subPackage "site-directory"
+subPackage "site-manager"
 
 buildRequirements "allowWarnings" "silenceDeprecations"
 buildOptions "ignoreDeprecations" "debugInfo"
