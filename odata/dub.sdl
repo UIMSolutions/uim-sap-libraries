@@ -3,9 +3,44 @@ description "D language library for working with SAP OData services using vibe.d
 authors "UIM"
 license "proprietary"
 
-dependency "vibe-d:http" version="~>0.10"
-dependency "vibe-d:data" version="~>0.10"
+// Dependency on the core framework
+dependency "uim-sap-libraries:library" path=".."
 
-targetType "library"
-sourcePaths "source"
-importPaths "source"
+// Build settings
+buildRequirements "allowWarnings" "silenceDeprecations"
+buildOptions "ignoreDeprecations" "debugInfo"
+
+// Configurations 
+configuration "defaultRun" {
+	targetType "executable"
+}
+
+configuration "defaultTest" {
+	targetType "library"
+}
+
+configuration "modules" {
+	targetType "library"
+	versions "show_module"
+}
+
+configuration "tests" {
+	targetType "library"
+	versions "show_module" "show_test"
+}
+
+configuration "inits" {
+	targetType "library"
+	versions "show_module" "show_init"
+}
+
+configuration "calls" {
+	targetType "library"
+	versions "show_module" "show_test" "show_function"
+}
+
+configuration "verbose" {
+	targetType "library"
+	versions "show_module" "show_test" "show_init" "show_function"
+}
+

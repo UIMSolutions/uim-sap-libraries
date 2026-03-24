@@ -14,40 +14,24 @@ targetName "uim-sap-libraries"
 dependency "uim-framework" version="~>26.3.5"
 
 // Internal Dependencies
-dependency ":service" version="*"
-
-dependency ":idoc" version="*"
-dependency ":oauth" version="*"
-dependency ":odata" version="*"
 dependency ":library" version="*"
-dependency ":application-autoscaler" version="*"
-dependency ":audit-log" version="*"
-dependency ":authorization-trust-management" version="*"
-dependency ":automation-pilot" version="*"
-dependency ":content-agent" version="*"}
-dependency ":feature-flags" version="*"
-dependency ":identity-provisioning" version="*"
-dependency ":keystore" version="*"
+
+// dependency ":idoc" version="*"
+// dependency ":oauth" version="*"
+// dependency ":odata" version="*"
+// dependency ":rfc" version="*"
 
 
 // Source files
-sourceFiles "./source/uim/sap/libraries/all.d"
+sourceFiles "./source/uim/sap/libraries/package.d"
 
 // Subpackages
-subPackage "service"
+subPackage "library"
 
-subPackage "idoc"
-subPackage "oauth"
-subPackage "odata"
-subPackage "library "
-subPackage "application-autoscaler"
-subPackage "audit-log"
-subPackage "authorization-trust-management"
-subPackage "automation-pilot"
-subPackage "content-agent"
-subPackage "feature-flags"
-subPackage "identity-provisioning"
-subPackage "keystore"
+// subPackage "idoc"
+// subPackage "oauth"
+// subPackage "odata"
+// subPackage "rfc"
 
 buildRequirements "allowWarnings" "silenceDeprecations"
 buildOptions "ignoreDeprecations" "debugInfo"
