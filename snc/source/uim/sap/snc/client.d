@@ -53,3 +53,23 @@ class SNCClient {
         return _service.execute(new EncryptionOnlyUseCase(_service.credentialProvider), input);
     }
 }
+
+unittest {
+    SNCConfig cfg;
+    cfg.dryRunGateway = true;
+    cfg.minimumProtectionLevel = SNCProtectionLevel.IntegrityProtection;
+
+    auto client = new SNCClient(cfg);
+
+    SNCUseCaseInput input;
+    input.initiator.principal = "user@example.org";
+    input.target.principal = "p:CN=SAP/PRD@EXAMPLE.ORG";
+    input.target.endpoint = "https://sap.example.org";
+    input.requestedProtectionLevel = SNCProtectionLevel.AuthenticationOnly;
+
+    auto result = client.encryptionOnly(input);
+
+    assert(result.success);
+    assert(result.useCaseName == "Encryption Only");
+    assert(result.effectiveProtectionLevel == SNCProtectionLevel.PrivacyProtection);
+}

@@ -29,3 +29,14 @@ bool hasIntegrity(SNCProtectionLevel level) pure nothrow @safe @nogc {
 bool hasPrivacy(SNCProtectionLevel level) pure nothrow @safe @nogc {
     return level >= SNCProtectionLevel.PrivacyProtection;
 }
+
+unittest {
+    assert(enforceMinimumProtectionLevel(
+        SNCProtectionLevel.AuthenticationOnly,
+        SNCProtectionLevel.IntegrityProtection
+    ) == SNCProtectionLevel.IntegrityProtection);
+
+    assert(hasAuthentication(SNCProtectionLevel.AuthenticationOnly));
+    assert(hasIntegrity(SNCProtectionLevel.IntegrityProtection));
+    assert(hasPrivacy(SNCProtectionLevel.PrivacyProtection));
+}

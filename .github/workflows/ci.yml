@@ -17,6 +17,7 @@ jobs:
         package:
           - .
           - library
+          - snc
         compiler:
           - dmd-latest
 

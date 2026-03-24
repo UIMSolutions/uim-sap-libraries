@@ -15,6 +15,7 @@ dependency "uim-framework" version="~>26.3.5"
 
 // Internal Dependencies
 dependency ":library" version="*"
+dependency ":snc" version="*"
 
 // dependency ":idoc" version="*"
 // dependency ":oauth" version="*"
@@ -27,6 +28,7 @@ sourceFiles "./source/uim/sap/libraries/package.d"
 
 // Subpackages
 subPackage "library"
+subPackage "snc"
 
 // subPackage "idoc"
 // subPackage "oauth"
