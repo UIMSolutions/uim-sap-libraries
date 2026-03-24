@@ -1,1 +1,0 @@
-module uim.sap.idoc.helpers;

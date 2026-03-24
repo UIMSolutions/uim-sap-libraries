@@ -1,19 +1,13 @@
 module uim.sap.idoc.models.response;
 
-import uim.sap.idoc;
-@safe:
+import uim.sap.idoc.domain;
 
-struct IDocResponse {
+struct IDocUseCaseResult {
+    string useCaseName;
     bool success;
-    int statusCode;
-    string documentNumber;
-    string status;
-    string errorMessage;
-    Json data = Json.emptyObject;
-    string[string] headers;
-    SysTime timestamp;
-
-    bool isSuccess() const pure nothrow @safe @nogc {
-        return success;
-    }
+    string idocNumber;
+    IDocDeliveryState deliveryState;
+    IDocMessageType messageType;
+    string[] notes;
+    string message;
 }
