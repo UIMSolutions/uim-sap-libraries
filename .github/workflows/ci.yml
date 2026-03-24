@@ -18,6 +18,7 @@ jobs:
           - .
           - library
           - snc
+          - idoc
         compiler:
           - dmd-latest
 
